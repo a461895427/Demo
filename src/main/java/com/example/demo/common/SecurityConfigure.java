@@ -2,6 +2,7 @@ package com.example.demo.common;
 
 import com.example.demo.handler.MyAuthenticationFailureHandler;
 import com.example.demo.handler.MyAuthenticationSuccessHandler;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -11,12 +12,17 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import javax.annotation.Resource;
 
+/**
+ * @author Rewrite
+ */
 @EnableWebSecurity
 public class SecurityConfigure extends WebSecurityConfigurerAdapter {
     @Resource
     private MyAuthenticationSuccessHandler successHandler;
     @Resource
     private MyAuthenticationFailureHandler failureHandler;
+    @Autowired
+    UserDetailServiceImpl userDetailsServiceImpl;
 
     @Override
     protected void configure(HttpSecurity httpSecurity) throws Exception {
@@ -40,7 +46,7 @@ public class SecurityConfigure extends WebSecurityConfigurerAdapter {
                 //配置权限
                 .authorizeRequests()
                 //用户可以任意访问
-                .antMatchers("/login.html", "/login").permitAll()
+                .antMatchers("/login.html", "/login","/css/**","/js/**").permitAll()
                 //需要对外暴露的资源路径
                 .antMatchers("/home")
                 //user角色和admin角色都可以访问
@@ -58,23 +64,15 @@ public class SecurityConfigure extends WebSecurityConfigurerAdapter {
         httpSecurity.logout().logoutUrl("/logout");
     }
 
+
     /**
      * BCryptPasswordEncoder进行密码加密
      */
     @Override
-    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        auth.inMemoryAuthentication()
-                .withUser("user")
-                .password(bCryptPasswordEncoder().encode("123456"))
-                .roles("user")
-                .and()
-                .withUser("admin")
-                .password(bCryptPasswordEncoder().encode("123456"))
-                .roles("admin")
-                .and()
-                //配置BCrypt加密
-                .passwordEncoder(bCryptPasswordEncoder());
+    public void configure(AuthenticationManagerBuilder auth) throws Exception {
+        auth.userDetailsService(userDetailsServiceImpl).passwordEncoder(bCryptPasswordEncoder());
     }
+
 
     /**
      * 强制哈希加密实现
@@ -83,4 +81,5 @@ public class SecurityConfigure extends WebSecurityConfigurerAdapter {
     public BCryptPasswordEncoder bCryptPasswordEncoder() {
         return new BCryptPasswordEncoder();
     }
+
 }

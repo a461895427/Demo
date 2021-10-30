@@ -10,13 +10,16 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
 
+/**
+ * @author Rewrite
+ */
 @Component
 public class MyAuthenticationSuccessHandler implements AuthenticationSuccessHandler {
 
     @Override
     public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response, Authentication authentication) throws IOException, ServletException {
         response.setContentType("application/json;charset=UTF-8");
-        PrintWriter out=response.getWriter();
+        PrintWriter out = response.getWriter();
         out.write("{\"code\":\"20001\",\"msg\":\"登录成功\"}");
     }
 }
