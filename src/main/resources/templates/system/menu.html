@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>系统设置</title>
+    <script src="../js/jquery/jquery-3.6.0.js"></script>
+    <script src="../js/bootstrap/bootstrap.js"></script>
+    <script src="../js/system/menu.js"></script>
+    <link href="../css/bootstrap/bootstrap.css" rel="stylesheet">
+    <link href="../css/system/menu.css" rel="stylesheet">
+</head>
+<body id="theme">
+<div class="container" style="background: rgba(255,255,255,0.5);width:100%;height: 100%">
+    <div class="row top-buffer">
+        <div class="col-md-11" id="top">
+        </div>
+        <div class="col-md-1" id="userinfo" style="background: #1E90FF">
+            你好，Rewrite
+        </div>
+    </div>
+    <div class="row top-buffer">
+        <div class="col-md-2">
+            <div class="panel-group table-responsive" role="tablist" id="accordion">
+                <div class="panel panel-primary leftMenu">
+                    <!-- 利用data-target指定要折叠的分组列表 -->
+                    <div class="panel-heading" id="menuList" data-toggle="collapse" data-target="#menu1" role="tab" data-parent="#accordion" >
+                        <h4 class="panel-title">
+                            用户模块
+                            <span class="glyphicon glyphicon-chevron-up right" id="searchCollapseIcon"></span>
+                        </h4>
+                    </div>
+                    <!-- .panel-collapse和.collapse标明折叠元素 .in表示要显示出来 -->
+                    <div id="menu1" class="panel-collapse collapse in" role="tabpanel"
+                         aria-labelledby="menuList">
+                        <ul class="nav nav-pills nav-stacked">
+                            <li class="active"><a id="menupermissions">用户管理</a></li>
+                            <li><a id="role">角色管理</a></li>
+                            <li><a id="users-table">权限管理</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="panel panel-primary leftMenu">
+                    <div class="panel-heading" id="menuList2" data-toggle="collapse" data-target="#menu2" role="tab" data-parent="#accordion">
+                        <h4 class="panel-title">
+                            系统模块
+                            <span class="glyphicon glyphicon-chevron-down right" id="searchCollapseIcon1"></span>
+                        </h4>
+                    </div>
+                    <div id="menu2" class="panel-collapse collapse " role="tabpanel"
+                         aria-labelledby="menuList2">
+                        <ul class="nav nav-pills nav-stacked">
+                            <li><a href="#">系统日志</a></li>
+                            <li><a href="#">在线用户</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-10" id="right">
+        </div>
+    </div>
+</div>
+</body>
+</html>

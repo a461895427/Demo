@@ -13,9 +13,10 @@ import java.util.List;
 
 /**
  * 用户对象 users
+ * @author Rewrite
  */
 @Entity
-@Table(name = "users")
+@Table(name = "t_user")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
@@ -26,22 +27,80 @@ public class Users implements UserDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column
-    private Long userId;
+    private Long user_Id;
+
     /**
      * 用户账号
      */
-    @Column(name = "user_name")
+    @Column(name = "username")
     private String userName;
+
     /**
      * 密码
      */
     @Column(name = "password")
     private String passWord;
+
+    /**
+     * 邮箱
+     */
+    @Column(name = "email")
+    private String email;
+
+    /**
+     * 手机号
+     */
+    @Column(name = "mobile")
+    private String mobile;
+
     /**
      * 帐号状态(0正常 1停用)
      */
     @Column(name = "status")
     private String status;
+
+    /**
+     * 创建时间
+     */
+    @Column(name = "creat_time")
+    private String creat_time;
+
+    /**
+     * 修改时间
+     */
+    @Column(name = "modify_time")
+    private String modify_time;
+
+    /**
+     * 最近访问时间
+     */
+    @Column(name = "last_login_time")
+    private String last_login_time;
+
+    /**
+     * 性别 0男 1女 2保密
+     */
+    @Column(name = "ssex")
+    private String ssex;
+
+    /**
+     * 是否开启tab，0关闭 1开启
+     */
+    @Column(name = "is_table")
+    private String is_table;
+
+    /**
+     * 头像
+     */
+    @Column(name = "avatar")
+    private String avatar;
+
+    /**
+     * 用户描述
+     */
+    @Column(name = "description")
+    private String description;
+
     /**
      * 用户角色(多角色用逗号间隔)
      */

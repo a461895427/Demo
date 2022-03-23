@@ -3,15 +3,14 @@
 <mapper namespace="com.example.demo.dao.UserDAO">
 
     <resultMap id="BaseResultMap" type="com.example.demo.bean.Users">
-        <result column="user_id" jdbcType="INTEGER" property="userId" />
-        <result column="user_name" jdbcType="VARCHAR" property="userName" />
-        <result column="passWord" jdbcType="VARCHAR" property="passWord" />
-        <result column="status" jdbcType="VARCHAR" property="status" />
-        <result column="roles" jdbcType="VARCHAR" property="roles" />
+        <result column="USER_ID" jdbcType="INTEGER" property="user_Id" />
+        <result column="USERNAME" jdbcType="VARCHAR" property="userName" />
+        <result column="PASSWORD" jdbcType="VARCHAR" property="passWord" />
+        <result column="STATUS" jdbcType="VARCHAR" property="status" />
     </resultMap>
 
     <select id="findUserAll" resultMap="BaseResultMap">
-        SELECT * FROM `users` where user_name = #{userName}
+        SELECT USER_ID,USERNAME,PASSWORD,STATUS FROM `t_user` where USERNAME = #{userName}
     </select>
 
 </mapper>

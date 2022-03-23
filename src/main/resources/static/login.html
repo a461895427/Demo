@@ -3,21 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <title>登录页面</title>
-    <link rel="stylesheet" href="./css/login/loginBG.css">
-    <link rel="stylesheet" href="./css/login/login.css">
+    <link rel="stylesheet" href="../css/login/loginBG.css">
+    <link rel="stylesheet" href="../css/login/login.css">
+
 </head>
 <body>
 <div class="dip"></div>
 <form action="/login" method="post">
 
     <label>
-        <input type="text" placeholder="账号"/>
+        <input type="text" name="username" id="username" placeholder="账号"/>
     </label>
     <label>
-        <input type="password" placeholder="密码"/>
+        <input type="password" name="password" id="password" placeholder="密码"/>
     </label>
-    <button class="red" type="submit">登录</button>
-
+    <label>
+        <button class="red" type="submit">登录</button>
+    </label>
+    <label>
+        <button class="red" type="submit">注册</button>
+    </label>
 </form>
 </body>
 <script>
@@ -31,7 +36,7 @@
             },
             success: function (data) {
                 if (data.code == 20001) {
-                    location.href = "/index";
+                    location.href = "/system";
                 } else {
                     alert(data.msg);
                 }
