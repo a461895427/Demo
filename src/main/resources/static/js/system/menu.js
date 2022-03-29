@@ -1,11 +1,29 @@
 $(function () {
     /**
      * 实现菜单导航图标切换
+     * 用户模块
      */
-    $(".panel-heading").click(function (e) {
+    $(menuList).click(function (e) {
         /*切换折叠指示图标*/
-        $(this).find("span").toggleClass("glyphicon-chevron-down");
-        $(this).find("span").toggleClass("glyphicon-chevron-up");
+        var menu = document.getElementById("searchCollapseIcon").getAttribute("class");
+        var menu1 = document.getElementById("searchCollapseIcon1").getAttribute("class");
+        menu = menu.replace(" glyphicon-chevron-down"," glyphicon-chevron-up");
+        menu1 = menu1.replace(" glyphicon-chevron-up"," glyphicon-chevron-down");
+        document.getElementById("searchCollapseIcon").setAttribute("class",menu );
+        document.getElementById("searchCollapseIcon1").setAttribute("class",menu1 );
+    });
+    /**
+     * 实现菜单导航图标切换
+     * 系统模块
+     */
+    $(menuList2).click(function (e) {
+        /*切换折叠指示图标*/
+        var menu = document.getElementById("searchCollapseIcon").getAttribute("class");
+        var menu1 = document.getElementById("searchCollapseIcon1").getAttribute("class");
+        menu = menu.replace(" glyphicon-chevron-up"," glyphicon-chevron-down");
+        menu1 = menu1.replace(" glyphicon-chevron-down"," glyphicon-chevron-up");
+        document.getElementById("searchCollapseIcon").setAttribute("class",menu );
+        document.getElementById("searchCollapseIcon1").setAttribute("class",menu1 );
     });
     /**
      * 实现选中一个菜单的功能
