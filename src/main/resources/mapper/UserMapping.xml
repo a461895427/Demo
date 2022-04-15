@@ -3,14 +3,22 @@
 <mapper namespace="com.example.demo.dao.UserDAO">
 
     <resultMap id="BaseResultMap" type="com.example.demo.bean.Users">
-        <result column="USER_ID" jdbcType="INTEGER" property="user_Id" />
-        <result column="USERNAME" jdbcType="VARCHAR" property="userName" />
-        <result column="PASSWORD" jdbcType="VARCHAR" property="passWord" />
-        <result column="STATUS" jdbcType="VARCHAR" property="status" />
+        <result column="USER_ID" jdbcType="INTEGER" property="user_Id"/>
+        <result column="USERNAME" jdbcType="VARCHAR" property="userName"/>
+        <result column="EMAIL" jdbcType="VARCHAR" property="email"/>
+        <result column="MOBILE" jdbcType="VARCHAR" property="mobile"/>
+        <result column="CREATE_TIME" jdbcType="VARCHAR" property="create_time"/>
+        <result column="MODIFY_TIME" jdbcType="VARCHAR" property="modify_time"/>
     </resultMap>
 
     <select id="findUserAll" resultMap="BaseResultMap">
-        SELECT USER_ID,USERNAME,PASSWORD,STATUS FROM `t_user` where USERNAME = #{userName}
+        SELECT USER_ID, USERNAME, PASSWORD
+        FROM `t_user`
+        where USERNAME = #{userName}
     </select>
 
+    <select id="queryUserAll" resultMap="BaseResultMap">
+        SELECT USER_ID, USERNAME, EMAIL, MOBILE, CREATE_TIME, MODIFY_TIME
+        FROM `t_user`
+    </select>
 </mapper>

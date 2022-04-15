@@ -12,11 +12,18 @@ import java.util.List;
  */
 @Repository
 public interface UserDAO {
-     /**
-      * 查询用户所有信息
-      * @param user
-      * @return
-      */
-     List findUserAll(Users user);
+    /**
+     * 查询用户所有信息
+     *
+     * @param user
+     * @return Users
+     */
+    Users findUserAll(Users user);
+
+    /**
+     * 查询所有用户
+     */
+    List<Users> queryUserAll();
+
 }
 

@@ -15,11 +15,15 @@ import java.util.List;
  */
 @Service
 public class UserServiceImpl implements UserService {
-    @Autowired
-    private UserDAO userDAO;
+    private final UserDAO userDAO;
+
+    public UserServiceImpl(UserDAO userDAO) {
+        this.userDAO = userDAO;
+    }
 
     /**
      * 通过用户名查询用户所有信息
+     *
      * @param userName
      * @return
      */
@@ -27,7 +31,16 @@ public class UserServiceImpl implements UserService {
     public Users selectUserByUserName(String userName) {
         Users user = new Users();
         user.setUserName(userName);
-        List list = userDAO.findUserAll(user);
-        return list.isEmpty() ? null : (Users) list.get(0);
+        user = userDAO.findUserAll(user);
+        return user.getUsername().isEmpty() ? null : user;
+    }
+
+    /**
+     * 用户表查询所有用户
+     */
+    @Override
+    public List<Users>  queryUserAll() {
+        List<Users> users = userDAO.queryUserAll();
+        return users;
     }
 }

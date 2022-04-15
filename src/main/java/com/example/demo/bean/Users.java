@@ -30,7 +30,7 @@ public class Users implements UserDetails {
     private Long user_Id;
 
     /**
-     * 用户账号
+     * 用户账号/用户名
      */
     @Column(name = "username")
     private String userName;
@@ -53,17 +53,12 @@ public class Users implements UserDetails {
     @Column(name = "mobile")
     private String mobile;
 
-    /**
-     * 帐号状态(0正常 1停用)
-     */
-    @Column(name = "status")
-    private String status;
 
     /**
      * 创建时间
      */
-    @Column(name = "creat_time")
-    private String creat_time;
+    @Column(name = "create_time")
+    private String create_time;
 
     /**
      * 修改时间
@@ -77,17 +72,6 @@ public class Users implements UserDetails {
     @Column(name = "last_login_time")
     private String last_login_time;
 
-    /**
-     * 性别 0男 1女 2保密
-     */
-    @Column(name = "ssex")
-    private String ssex;
-
-    /**
-     * 是否开启tab，0关闭 1开启
-     */
-    @Column(name = "is_table")
-    private String is_table;
 
     /**
      * 头像
@@ -107,7 +91,9 @@ public class Users implements UserDetails {
     @Column(name = "roles")
     private String roles;
 
-    /**实体类中使想要添加表中不存在字段，就要使用@Transient这个注解了。*/
+    /**
+     * 实体类中使想要添加表中不存在字段，就要使用@Transient这个注解了。
+     */
     @Transient
     private List authorities;
 
@@ -140,6 +126,7 @@ public class Users implements UserDetails {
 
     /**
      * 指定用户是否解锁,锁定的用户无法进行身份验证
+     *
      * @return
      */
     @Override
@@ -149,6 +136,7 @@ public class Users implements UserDetails {
 
     /**
      * 指示是否已过期的用户的凭据(密码),过期的凭据防止认证
+     *
      * @return
      */
     @Override
@@ -158,6 +146,7 @@ public class Users implements UserDetails {
 
     /**
      * 是否可用 ,禁用的用户不能身份验证
+     *
      * @return
      */
     @Override

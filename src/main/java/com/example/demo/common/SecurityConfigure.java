@@ -21,8 +21,12 @@ public class SecurityConfigure extends WebSecurityConfigurerAdapter {
     private MyAuthenticationSuccessHandler successHandler;
     @Resource
     private MyAuthenticationFailureHandler failureHandler;
-    @Autowired
-    UserDetailServiceImpl userDetailsServiceImpl;
+
+    final UserDetailServiceImpl userDetailsServiceImpl;
+
+    public SecurityConfigure(UserDetailServiceImpl userDetailsServiceImpl) {
+        this.userDetailsServiceImpl = userDetailsServiceImpl;
+    }
 
     @Override
     protected void configure(HttpSecurity httpSecurity) throws Exception {

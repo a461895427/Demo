@@ -15,8 +15,11 @@ import org.springframework.stereotype.Component;
  */
 @Component
 public class UserDetailServiceImpl implements UserDetailsService {
-    @Autowired
-    private UserService userService;
+    private final UserService userService;
+
+    public UserDetailServiceImpl(UserService userService) {
+        this.userService = userService;
+    }
 
     /**
      * 通过用户名判断是否存在用户

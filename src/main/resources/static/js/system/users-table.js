@@ -7,7 +7,7 @@ $(function() {
     })
 
     $('#mytab').bootstrapTable({
-        url: "",//数据源
+        url: "/queryUser",//数据源
         dataField: "rows",//服务端返回数据键值 就是说记录放的键值是rows，分页时使用总记录数的键值为total
         height: tableHeight(),//高度调整
         search: true,//是否搜索
@@ -17,7 +17,7 @@ $(function() {
         sidePagination: "server",//服务端分页
         contentType: "application/x-www-form-urlencoded",//请求数据内容格式 默认是 application/json 自己根据格式自行服务端处理
         dataType: "json",//期待返回数据类型
-        method: "post",//请求方式
+        method: "get",//请求方式
         searchAlign: "left",//查询框对齐方式
         queryParamsType: "limit",//查询参数组织方式
         queryParams: function getParams(params) {
@@ -48,13 +48,13 @@ $(function() {
             },
             {
                 field: "name",
-                title: "NAME",
+                title: "姓名",
                 sortable: true,
                 titleTooltip: "this is name"
             },
             {
                 field: "age",
-                title: "AGE",
+                title: "年龄",
                 sortable: true,
             },
             {
