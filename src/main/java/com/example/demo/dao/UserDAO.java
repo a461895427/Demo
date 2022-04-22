@@ -5,6 +5,7 @@ import com.example.demo.bean.Users;
 
 import org.springframework.stereotype.Repository;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 /**
@@ -15,15 +16,21 @@ public interface UserDAO {
     /**
      * 查询用户所有信息
      *
-     * @param user
      * @return Users
      */
     Users findUserAll(Users user);
 
     /**
-     * 查询所有用户
+     *  查询所有用户数据数量
      */
-    List<Users> queryUserAll();
+    BigDecimal queryUserAllSum();
+
+    /**
+     *  查询所有用户数据
+     * offset 当前展示的第一条
+     * limit 限制展示的条数
+     */
+    List<Users> queryUserAll(int offset,int limit);
 
 }
 

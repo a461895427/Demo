@@ -20,5 +20,10 @@
     <select id="queryUserAll" resultMap="BaseResultMap">
         SELECT USER_ID, USERNAME, EMAIL, MOBILE, CREATE_TIME, MODIFY_TIME
         FROM `t_user`
+        LIMIT #{offset},#{limit}
+    </select>
+
+    <select id="queryUserAllSum" resultType="decimal">
+        SELECT COUNT(1) FROM T_USER
     </select>
 </mapper>

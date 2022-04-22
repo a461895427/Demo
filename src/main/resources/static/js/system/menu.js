@@ -3,7 +3,7 @@ $(function () {
      * 实现菜单导航图标切换
      * 用户模块
      */
-    $(menuList).click(function (e) {
+    $(menuList).click(function () {
         /*切换折叠指示图标*/
         var menu = document.getElementById("searchCollapseIcon").getAttribute("class");
         var menu1 = document.getElementById("searchCollapseIcon1").getAttribute("class");
@@ -16,7 +16,7 @@ $(function () {
      * 实现菜单导航图标切换
      * 系统模块
      */
-    $(menuList2).click(function (e) {
+    $(menuList2).click(function () {
         /*切换折叠指示图标*/
         var menu = document.getElementById("searchCollapseIcon").getAttribute("class");
         var menu1 = document.getElementById("searchCollapseIcon1").getAttribute("class");
@@ -35,14 +35,14 @@ $(function () {
     /**
      * 实现用户管理控制页面动态加载
      */
-    $("#menupermissions").click(function () {
-        $("#right").load("menupermissions")
+    $("#users-table").click(function () {
+        $("#right").load("users-table")
     });
     /**
      * 实现菜单权限管理页面动态加载
      */
-    $("#users-table").click(function () {
-        $("#right").load("users-table")
+    $("#menupermissions").click(function () {
+        $("#right").load("menupermissions")
     });
     /**
      * 实现角色管理页面动态加载
@@ -64,7 +64,7 @@ window.onload = function () {
 }
 
 window.onload = function () {
-    $("#right").load("menupermissions")
+    $("#right").load("users-table")
     $("#top").load("navigation")
 }
 
