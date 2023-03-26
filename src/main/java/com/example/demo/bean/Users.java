@@ -13,6 +13,7 @@ import java.util.List;
 
 /**
  * 用户对象 users
+ *
  * @author Rewrite
  */
 @Entity
@@ -22,12 +23,17 @@ import java.util.List;
 @AllArgsConstructor
 public class Users implements UserDetails {
     /**
-     * 用户ID
+     * 唯一ID
      */
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column
-    private Long user_Id;
+    private Long ID;
+    /**
+     * 用户ID
+     */
+    @Column(name = "user_id")
+    private String user_Id;
 
     /**
      * 用户账号/用户名

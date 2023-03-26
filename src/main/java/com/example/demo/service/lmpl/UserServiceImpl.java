@@ -7,6 +7,7 @@ import com.example.demo.service.UserService;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
+import java.util.HashMap;
 import java.util.List;
 
 
@@ -51,4 +52,20 @@ public class UserServiceImpl implements UserService {
     public List<Users> queryUserAll(int offset,int limit) {
         return userDAO.queryUserAll(offset,limit);
     }
+
+    /**
+     * 新增用户
+     *
+     * @param userAddMap
+     * @return
+     */
+    @Override
+    public Boolean addUser(HashMap<String, String> userAddMap) {
+        int result = userDAO.addUser(userAddMap);
+        if (result > 0) {
+            return true;
+        }
+        return false;
+    }
+
 }

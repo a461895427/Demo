@@ -53,15 +53,6 @@ $(function () {
 });
 
 
-window.onload = function () {
-    var t = new Date().getHours();
-    if (t >= 22 || t <= 6) {
-        // $("#theme").attr("id","test2");//改变id
-        //$("#theme").attr("class","theme-dark");//改变class
-        // $("#theme").attr({"id":"test2","class":"demo2"});//改变id和class
-        $("#theme").attr("class", "theme-dark");//关灯效果
-    }
-}
 
 window.onload = function () {
     $("#right").load("users-table")

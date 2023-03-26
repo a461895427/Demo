@@ -3,44 +3,54 @@
 <head>
     <meta charset="UTF-8">
     <title>用户管理</title>
-    <script src="../js/system/users-table.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
 </head>
 <body>
 <div class="col-*-12" style="padding-right: 5vh">
     <h2 class="text-center"><strong>用户管理</strong></h2>
     <div id="toolbar">
-        <div class="btn btn-primary" data-toggle="modal" data-target="#addModal">添加用户</div>
+        <div class="btn btn-primary" data-toggle="modal" data-target="#addModal">添加新用户</div>
     </div>
 
-    <table id="mytab" class="table table-hover"></table>
+    <table id="usertab" class="table table-hover"></table>
 
-    <div class="modal fade" id="addModal" tabindex="-1" role="dialog" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
-                        &times;
-                    </button>
-                    <h4 class="modal-title" id="myModalLabel">添加用户</h4>
-                </div>
-                <div class="modal-body">
-                    <form role="form" action="javascript:void(0)">
-                        <div class="form-group">
-                            <label><input type="text" class="form-control" id="name" placeholder="请输入名称"></label>
-                        </div>
-                        <div class="form-group">
-                            <label><input type="text" class="form-control" id="age" placeholder="请输入年龄"></label>
-                        </div>
-                    </form>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
-                    <button type="button" class="btn btn-primary" id="addRecord">提交</button>
-                </div>
+    <div class="modal fade" id="addModal" tabindex="-1" role="dialog">
+        <div class="modal-dialog modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">
+                    &times;
+                </button>
+                <h4 class="modal-title" id="myModalLabel">添加新用户</h4>
+            </div>
+            <div class="modal-body">
+                <form role="form" id="addOneUser">
+                    <div class="form-group">
+                        <label class="show" for="userId">账号ID</label>
+                        <input type="text" class="form-control" id="userId" placeholder="请输入账号ID"/>
+                    </div>
+                    <div class="form-group">
+                        <label class="show" for="userName">账号名称</label>
+                        <input type="text" class="form-control" id="userName" placeholder="请输入账号名称"/>
+                    </div>
+                    <div class="form-group">
+                        <label class="show" for="email">邮箱地址</label>
+                        <input type="text" class="form-control" id="email" placeholder="请输入邮箱地址"/>
+                    </div>
+                    <div class="form-group">
+                        <label class="show" for="phoneNumber">手机号</label>
+                        <input type="text" class="form-control" id="phoneNumber" placeholder="请输入手机号"/>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                <button type="button" class="btn btn-primary" onclick="addRecord();">提交</button>
             </div>
         </div>
     </div>
 </div>
+
+
+<script src="../js/system/users-table.js"></script>
 </body>
 </html>

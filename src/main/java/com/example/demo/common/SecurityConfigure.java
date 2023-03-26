@@ -9,6 +9,7 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.web.firewall.StrictHttpFirewall;
 
 import javax.annotation.Resource;
 
@@ -45,12 +46,12 @@ public class SecurityConfigure extends WebSecurityConfigurerAdapter {
                 .successHandler(successHandler)
                 //登录失败跳转处理方法
                 .failureHandler(failureHandler)
-         //使用and()连接
-        .and()
+                //使用and()连接
+                .and()
                 //配置权限
                 .authorizeRequests()
                 //用户可以任意访问
-                .antMatchers("/login.html", "/login","/css/**","/js/**").permitAll()
+                .antMatchers("/login.html", "/login", "/css/**", "/js/**", "/img/**").permitAll()
                 //需要对外暴露的资源路径
                 .antMatchers("/home")
                 //user角色和admin角色都可以访问
@@ -61,7 +62,7 @@ public class SecurityConfigure extends WebSecurityConfigurerAdapter {
                 //除上面外的所有请求全部需要授权认证
                 //authenticated要求在执行该请求时，必须是已经登录状态
                 .anyRequest().authenticated()
-        .and()
+                .and()
                 //禁用跨站csrf攻击防御，否则无法登录成功，主要是阻挡了POST/PUT/DELETE请求等，没阻挡GET请求，暂时用不上
                 .csrf().disable();
         //登出系统
@@ -85,5 +86,20 @@ public class SecurityConfigure extends WebSecurityConfigurerAdapter {
     public BCryptPasswordEncoder bCryptPasswordEncoder() {
         return new BCryptPasswordEncoder();
     }
+
+    /**
+     * spring security的默认字符集不识别中文，导致验证报错spring security的默认字符集不识别中文，导致验证报错，对所有的头字段验证均返回true
+     *
+     * @return firewall
+     */
+    @Bean
+    public StrictHttpFirewall httpFirewall() {
+        StrictHttpFirewall firewall = new StrictHttpFirewall();
+        firewall.setAllowedHeaderNames((header) -> true);
+        firewall.setAllowedHeaderValues((header) -> true);
+        firewall.setAllowedParameterNames((parameter) -> true);
+        return firewall;
+    }
+
 
 }

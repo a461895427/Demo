@@ -9,8 +9,13 @@ body {
 }
 
 body {
-  background-image: url(https://konachan.net/jpeg/8eb99f2be2adf4dfee2d388d93de6379/Konachan.com%20-%20333909%20azur_lane%20brown_eyes%20cosplay%20gray_hair%20halloween%20higandgk%20horns%20logo%20long_hair%20nurse%20pumpkin%20purple_hair%20red_eyes%20thighhighs%20twintails.jpg);
-  background-size: cover;
+  background-image: url(../../img/menuBackground.jpg);
+  background-size: contain;
+}
+
+.translucency{
+  background: rgba(255,255,255,0.5);width:100%;height: 100%;
+  background-size: contain;
 }
 
 /* Advanced Checkbox Hack */

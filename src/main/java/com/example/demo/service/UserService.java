@@ -5,6 +5,7 @@ import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
+import java.util.HashMap;
 import java.util.List;
 
 /**
@@ -21,14 +22,22 @@ public interface UserService {
     Users selectUserByUserName(String userName);
 
     /**
-     *  查询所有用户数据数量
+     * 查询所有用户数据数量
      */
     BigDecimal queryUserAllSum();
 
     /**
-     *  查询所有用户数据
-     *  offset 当前展示的第一条
-     *  limit 限制展示的条数
+     * 查询所有用户数据
+     * offset 当前展示的第一条
+     * limit 限制展示的条数
      */
-    List<Users> queryUserAll(int offset,int limit);
+    List<Users> queryUserAll(int offset, int limit);
+
+    /**
+     * 新增用户
+     *
+     * @param userAddMap
+     * @return
+     */
+    Boolean addUser(HashMap<String, String> userAddMap);
 }

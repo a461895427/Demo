@@ -11,19 +11,28 @@
         <result column="MODIFY_TIME" jdbcType="VARCHAR" property="modify_time"/>
     </resultMap>
 
+    <!--查询用户所有信息-->
     <select id="findUserAll" resultMap="BaseResultMap">
         SELECT USER_ID, USERNAME, PASSWORD
         FROM `t_user`
         where USERNAME = #{userName}
     </select>
 
+    <!--查询所有用户数据-->
     <select id="queryUserAll" resultMap="BaseResultMap">
         SELECT USER_ID, USERNAME, EMAIL, MOBILE, CREATE_TIME, MODIFY_TIME
-        FROM `t_user`
-        LIMIT #{offset},#{limit}
+        FROM `t_user` LIMIT #{offset},#{limit}
     </select>
 
+    <!--查询所有用户数据数量-->
     <select id="queryUserAllSum" resultType="decimal">
-        SELECT COUNT(1) FROM T_USER
+        SELECT COUNT(1)
+        FROM T_USER
     </select>
+
+    <!--新增用户-->
+    <insert id="addUser" parameterType="java.util.HashMap">
+        INSERT INTO `t_user` (user_Id, userName, password, email, mobile, create_time)
+        values (#{userId}, #{userName}, #{password}, #{email}, #{mobile}, #{create_time});
+    </insert>
 </mapper>
